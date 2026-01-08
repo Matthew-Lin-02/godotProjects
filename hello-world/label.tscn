@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ccv12vn87idqo"]
+
+[node name="Label" type="Label"]
+offset_left = 542.0
+offset_top = 307.0
+offset_right = 633.0
+offset_bottom = 330.0
+text = "Hello World"
