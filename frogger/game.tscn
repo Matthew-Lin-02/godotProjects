@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://r8e5vdmp0k17"]
+
+[ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://bjy1c24lq0gf7" path="res://player.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://ddb25bkupg31e" path="res://decorations.tscn" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://d0wkoqet6xces" path="res://decorations.gd" id="4_fc0e3"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_80nbo")
+
+[node name="Player" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(22, 34)
+
+[node name="Decorations" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(-200, -138)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_fc0e3")

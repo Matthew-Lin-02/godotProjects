@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddb25bkupg31e"]
+
+[ext_resource type="Texture2D" uid="uid://d0so81ys3820n" path="res://graphics/objects/tree1.png" id="1_ytrw3"]
+[ext_resource type="Texture2D" uid="uid://y78osdw0bolc" path="res://graphics/objects/box1.png" id="2_pvyhe"]
+
+[node name="Decorations" type="Node2D"]
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(549, 393)
+texture = ExtResource("1_ytrw3")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(236, 400)
+texture = ExtResource("1_ytrw3")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(548, 200)
+texture = ExtResource("1_ytrw3")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(236, 209)
+texture = ExtResource("1_ytrw3")
+
+[node name="Box" type="Sprite2D" parent="."]
+position = Vector2(397, 406)
+texture = ExtResource("2_pvyhe")
+
+[node name="Box2" type="Sprite2D" parent="."]
+position = Vector2(545, 285)
+texture = ExtResource("2_pvyhe")
+
+[node name="Box3" type="Sprite2D" parent="."]
+position = Vector2(383, 200)
+texture = ExtResource("2_pvyhe")
+
+[node name="Box4" type="Sprite2D" parent="."]
+position = Vector2(243, 305)
+texture = ExtResource("2_pvyhe")
