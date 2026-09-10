@@ -14,6 +14,6 @@ texture = ExtResource("1_80nbo")
 position = Vector2(22, 34)
 
 [node name="Decorations" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(-200, -138)
+position = Vector2(117, 192)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("4_fc0e3")
