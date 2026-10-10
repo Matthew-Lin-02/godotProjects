@@ -1,9 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://r8e5vdmp0k17"]
+[gd_scene load_steps=10 format=3 uid="uid://r8e5vdmp0k17"]
 
 [ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bjy1c24lq0gf7" path="res://player.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://ddb25bkupg31e" path="res://decorations.tscn" id="3_feb5d"]
-[ext_resource type="Script" uid="uid://d0wkoqet6xces" path="res://decorations.gd" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ddb25bkupg31e" path="res://tree.tscn" id="3_feb5d"]
+
+[sub_resource type="GDScript" id="GDScript_feb5d"]
+script/source = "extends StaticBody2D
+
+var scale_vector: Vector2 = Vector2.ONE 
+var scale_speed = 0.001
+#func _physics_process(_delta: float) -> void:
+	#scale += scale_vector * scale_speed
+	#scale *= 1.01
+"
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_feb5d"]
+a = Vector2(-192, 320)
+b = Vector2(-192, -320)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fc0e3"]
+a = Vector2(192, -320)
+b = Vector2(192, 320)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7jktm"]
+a = Vector2(-192, -320)
+b = Vector2(192, -320)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ryrav"]
+a = Vector2(-192, 320)
+b = Vector2(192, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
+size = Vector2(381, 124.5)
 
 [node name="Game" type="Node2D"]
 
@@ -11,9 +39,35 @@
 texture = ExtResource("1_80nbo")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(22, 34)
+position = Vector2(43, 69)
 
-[node name="Decorations" parent="." instance=ExtResource("3_feb5d")]
+[node name="Tree" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(117, 192)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("4_fc0e3")
+script = SubResource("GDScript_feb5d")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("SegmentShape2D_feb5d")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+shape = SubResource("SegmentShape2D_fc0e3")
+
+[node name="CollisionShape2DTop" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+shape = SubResource("SegmentShape2D_7jktm")
+
+[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+shape = SubResource("SegmentShape2D_ryrav")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -255)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_feb5d")
+
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
